@@ -21,13 +21,26 @@
 
 // Using the fs module of fs module
 // Syncrinous Version
-const fs = require('fs');
+// const fs = require('fs');
 
 // const files = fs.readdirSync('./')
 // console.log(files)
 
 // Asycrinous Version of fs module
-fs.readdir('./', function(err, files){
-    if(err) console.log('Error', err);
-    else console.log('Result', files);
+// fs.readdir('./', function(err, files){
+//     if(err) console.log('Error', err);
+//     else console.log('Result', files);
+// });
+
+
+// Uisng the EventEmitter module 
+const EventEmitter = require('events');
+const emitter = new EventEmitter();
+
+// Register a listener
+emitter.on('messageLogged', function(){
+    console.log('Listener Called')
 });
+
+// Raise an event
+emitter.emit('messageLogged');
